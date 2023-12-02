@@ -1,0 +1,133 @@
+from Project_Functions import *
+
+# Functions Included in project Functions
+# main_menu()
+# owner_menu()
+# add_book()
+# search_books(search_str)
+# stock_report()
+# purchase_book(search_isbn)
+# login(username, password)
+# is_username_exists(username)
+# register_user()
+# delete_user()
+
+exit_program = False
+
+while not exit_program:
+    # Display the main menu and get the user's choice
+    choice = main_menu()
+
+    # User selected "Login"
+    if choice == 1:
+        return_main_menu = False
+        successful_login = False
+
+        while not successful_login:
+            # Prompt the user for username and password
+            entered_username = input("Enter your username: ")
+            entered_password = input("Enter your password: ")
+
+            # Attempt to log in with the provided credentials
+            successful_login, credentials = login(entered_username, entered_password)
+
+            # If login is not successful, offer options to retry or return to the main menu
+            if not successful_login:
+                ch = int(input("1. Try Again?\n2. Return to main menu\nEnter Choice: "))
+
+                while ch != 1 and ch != 2:
+                    print("Incorrect Choice")
+                    ch = int(input("1. Try Again?\n2. Return to main menu\nEnter Choice: "))
+
+                if ch == 1:
+                    return_main_menu = False
+                    continue
+                else:
+                    return_main_menu = True
+                    break
+
+        # Check user credentials and navigate to the appropriate menu
+        if int(credentials) == 0:
+            print("Welcome, " + entered_username + " (owner)")
+            exit_owner = False
+
+            while not exit_owner:
+                # Display owner menu and get the owner's choice
+                owner_choice = owner_menu()
+
+                # Execute owner's chosen action
+                if owner_choice == 1:
+                    stock_report()
+                elif owner_choice == 2:
+                    add_book()
+                elif owner_choice == 3:
+                    search_key = str(input("Please give book's isbn or title for purchase: "))
+                    purchase_book(search_key)
+                elif owner_choice == 4:
+                    delete_user()
+                else:
+                    exit_owner = True
+
+        elif int(credentials) == 1:
+            print("Welcome, " + entered_username + " (customer)")
+            exit_user = False
+
+            while not exit_user:
+                # Display user menu and get the user's choice
+                user_choice = user_menu()
+
+                # Execute user's chosen action
+                if user_choice == 1:
+                    stock_report()
+                elif user_choice == 2:
+                    print("----------------------------------\n")
+                    search_str = str(input("Please give your search criteria: "))
+                    search_books(search_str)
+                elif user_choice == 3:
+                    print("----------------------------------\n")
+                    search_key = str(input("Please give book's isbn or title for purchase: "))
+                    purchase_book(search_key)
+                    print("\n-------------------------------------")
+                else:
+                    exit_user = True
+
+        elif return_main_menu:
+            continue
+
+    # User selected "Register"
+    elif choice == 2:
+        new_user = register_user()
+
+        # If a new user is registered, display the user menu
+        if new_user:
+            exit_user = False
+
+            while not exit_user:
+                # Display user menu and get the user's choice
+                user_choice = user_menu()
+
+                # Execute user's chosen action
+                if user_choice == 1:
+                    stock_report()
+                elif user_choice == 2:
+                    print("----------------------------------\n")
+                    search_str = str(input("Please give your search criteria: "))
+                    search_books(search_str)
+                elif user_choice == 3:
+                    print("----------------------------------\n")
+                    search_isbn = str(input("Please give book's isbn for purchase: "))
+                    purchase_book(search_isbn)
+                    print("\n-------------------------------------")
+                else:
+                    exit_user = True
+        else:
+            continue
+
+    # User selected "Stock Report"
+    elif choice == 3:
+        stock_report()
+
+    # User selected "Exit"
+    else:
+        print("Program Terminating...")
+        exit_program = True
