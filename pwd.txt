@@ -1,0 +1,9 @@
+cdim,12345abc,0
+abal,12345abc,0
+gdim,012547fguy,1
+edem,789524opik,1
+aramp,121515poiu,1
+uterp,363534pyoy,1
+eserp,12345,1
+asot,12345,1
+hellothere,1234,1
