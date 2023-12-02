@@ -1,0 +1,16 @@
+#that function will be used on owner menu function in order to add books on document
+import sys
+def add_book():
+    try: 
+        f = open("books.txt","a")
+    except OSError:
+        print("Could not load file")
+        sys.exit()
+    with f:
+        title = input("Title: ")
+        author = input("Author: ")
+        isbn = input("ISBN: ")
+        pages = input("Pages: ")
+        copies = int(input("Copies: "))
+        price = float(input("Price: "))
+        f.write("\n" + title + "," + author + "," + isbn + "," + str(pages) + "," + str(copies) + "," + str(price))
