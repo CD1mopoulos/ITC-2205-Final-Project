@@ -1,0 +1,15 @@
+#This function will be used as the general menu of our program and i will proceed to othem menus and choices
+
+def main_menu():
+    validint = False
+    while not validint: # while it is false
+        try: 
+            ch = int(input("1. Login\n2. Register\n3. Browse\n4. Exit\nPlease Give Your Choice: "))
+        except ValueError: 
+            print("Input is not an integer number. Give an integer between 1 and 4.")
+        else:
+            if (ch < 1) or (ch > 4):
+                print("Choice Out of Range. Give an integer between 1 and 4.")
+            else: 
+                validint = True
+    return ch
