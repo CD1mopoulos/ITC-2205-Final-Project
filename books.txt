@@ -1,0 +1,6 @@
+Police:A Harry Hole Novel (10)(Harry Hole Series),Jo Nesbo,0307951162,576,10,15.99
+It: Film tie-in edition of Stephen King's IT,Steven King,1501182099,1168,50,20
+The Shining Hardcover, Stephen King,0385121679,450,15,11.99
+The Complete Sherlock Holmes Collection (Wordsworth Box Sets) Paperback, Sir Arthur Conan Doyle,1840227494,2608,20,25.99
+Origin: A Novel,Dan Brown,0385514239,480,10,25.40
+abc,author name,1245,100,10,50.0
