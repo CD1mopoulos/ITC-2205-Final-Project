@@ -1,0 +1,36 @@
+def is_username_exists(username):
+    # Check if the username already exists in the user database
+    with open("pwd.txt", "r") as file:
+        lines = file.readlines()
+        for line in lines:
+            existing_username = line.split(",")[0]
+            if existing_username == username:
+                return True
+    return False
+
+
+def register_user():
+    # Get username and password from the user
+    username = input("Enter a username: ")
+    password = input("Enter a password: ")
+    exist = is_username_exists(username)
+    while exist:
+        ch = int(input("Username already exists\n1. Choose a different username\n2. Exit to main menu\nEnter choice: "))
+        while ch != 1 and ch != 2:
+            print("Incorrect Choice")
+            ch = int(input("1. Choose a different username\n2. Exit to main menu\nEnter choice: "))
+        if ch == 1:
+            username = input("Enter a username: ")
+            password = input("Enter a password: ")
+            exist = is_username_exists(username)
+            continue
+        else:
+            return False
+            # Check if the username already exists in the user database
+    if not is_username_exists(username):
+        # If the username is not in the database, add the new user
+        with open("pwd.txt", "a") as file:
+            file.write(f"\n{username},{password},{1}")
+        print("User registered successfully!")
+        print("Welcome, " + username + " (user)")
+        return True
