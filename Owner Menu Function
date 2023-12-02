@@ -1,0 +1,16 @@
+#this is the owner function. we have a menu for the possible choices of the owner to choose. depending the choice owner takes each number will lead to a different function. Functions wll be used is stock report, 
+#add book function that are already done, as long as suspend user function and sales function that are not done yet.
+
+def owner_menu():
+    validint = False
+    while not validint: # while it is false
+        try: 
+            ch = int(input("1. Stock Report\n2. Add Books\n3. Purchase Books\n4. Suspend User\n5. Exit\nPlease Give Your Choice: "))
+        except ValueError: 
+            print("Input is not an integer number. Give an integer between 1 and 5.")
+        else:
+            if (ch < 1) or (ch > 5):
+                print("Choice Out of Range. Give an integer between 1 and 5.")
+            else: 
+                validint = True
+    return ch
