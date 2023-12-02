@@ -1,0 +1,15 @@
+#that would be used on the owner menu for the stock part and probably on informing the stock on user
+
+import sys
+def stock_report():
+    try: 
+        f = open("books.txt","r")
+    except OSError:
+        print("Could not load file")
+        sys.exit()
+    with f:
+        for line in f.readlines():
+            line.strip()
+            title,author,isbn,pages,copies,price = line.split(",")   
+            print("Title: " + title + "\n" + "Author: " + author + "\n" + "ISBN: " + isbn + "\n" + "Pages: " + pages + "\n" + "Copies: " + copies + "\n" + "Price: $" + price + "\n")
+
