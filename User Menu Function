@@ -1,0 +1,16 @@
+# this is a user menu, the second main and general menu and function we will use on our project. Here we have 3 choices, 1 search book, 2 purchase book and 3 exit
+# depending the choice of the user, each choice wil lead to a specific other function
+
+def user_menu():
+    validint = False
+    while not validint: # while it is false
+        try: 
+            ch = int(input("1. Browse Books\n2. Search Books\n3. Purchase Books\n4. Exit\nPlease Give Your Choice: "))
+        except ValueError: 
+            print("Input is not an integer number. Give an integer between 1 and 4.")
+        else:
+            if (ch < 1) or (ch > 4):
+                print("Choice Out of Range. Give an integer between 1 and 4.")
+            else: 
+                validint = True
+    return ch
