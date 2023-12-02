@@ -1,0 +1,32 @@
+def login(username, password):
+    # Open the text file in read mode
+    with open('pwd.txt', 'r') as file:
+        # Iterate through each line in the file
+        for line in file:
+            # Split the line into username and password using a comma as the separator
+            stored_username, stored_password, stored_credentials = line.strip().split(',')
+
+            # Check if the entered username and password match the stored values
+            if username == stored_username and password == stored_password:
+                print("Login successful!")
+                return True, stored_credentials
+
+    # If no match is found, print an error message and return False
+    print("Incorrect username or password. Please try again.")
+    return False, 9999
+
+
+# Example usage
+entered_username = input("Enter your username: ")
+entered_password = input("Enter your password: ")
+
+# Call the login function with the entered credentials
+login_successful = login(entered_username, entered_password)
+
+# You can use the login_successful variable to perform further actions based on the login status
+if login_successful:
+    # Do something after successful login
+    print("Welcome,", entered_username)
+else:
+    # Do something if login failed
+    print("Access denied.")
