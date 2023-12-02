@@ -1,0 +1,27 @@
+def search_book_by_title(book_title, file_path="books.txt"):
+    try:
+        with open(file_path, "r") as file:
+            for line in file:
+                book_info = line.strip().split(",")
+                title = book_info[0]
+                if title.lower() == book_title.lower():
+                    print("Book found:")
+                    print("Title:", title)
+                    print("Author:", book_info[1])
+                    print("Code Number:", book_info[2])
+                    print("Pages:", book_info[3])
+                    print("Copies:", book_info[4])
+                    print("Price:", book_info[5])
+                    return True
+            print("Book not found.")
+            return False
+    except FileNotFoundError:
+        print(f"Error: File '{file_path}' not found.")
+        return False
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return False
+
+# Example usage
+book_name_to_search = input("Enter the book's name to search: ")
+search_book_by_title(book_name_to_search)
